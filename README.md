@@ -91,6 +91,7 @@ Test Case 12 : Underflow Handling Test
 ![image](https://github.com/user-attachments/assets/d88e27fe-25d1-4b81-94c1-7ba0b1c3f1e5)
 
 **Results**
+
 The synchronous FIFO design was tested using a testbench. The following key results were observed:-
 1. Correct Data Storage and Retrieval: The FIFO correctly stored data when written to and retrieved the exact same data when read from. This was validated across multiple test cases with varying data patterns.
 2. Full and Empty Conditions: The FIFO accurately indicated full and empty conditions. When the FIFO was full, additional write operations were correctly prevented, and when the FIFO was empty, additional read operations were correctly halted.
@@ -102,6 +103,7 @@ The synchronous FIFO design was tested using a testbench. The following key resu
 4. Communication in FPGA systems
 
 **Conclusion**
+
 The synchronous FIFO was successfully designed, implemented, and verified in Vivado using Verilog HDL. The FIFO efficiently handles data transfer between modules operating under the same clock domain, ensuring smooth and reliable data flow. Simulation and synthesis results confirmed correct functionality, with proper handling of full, empty, read, and write operations. This design can now be integrated into larger digital systems such as processors, image buffers, or communication interfaces.
 
 
