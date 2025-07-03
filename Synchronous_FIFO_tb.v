@@ -44,7 +44,7 @@ end
 //Taking Test Cases
 initial
 begin 
-  test_case = 0;
+  test_case = 1;
   reset = 0;
   w_en = 0;
   r_en = 0;
@@ -70,9 +70,9 @@ begin
       test_case_multiple_writes();
       test_case_multiple_reads();
     end
-  8:test_case_wrap_around();
-  9:test_case_simultaneous_read_write();
-  10:test_case_reset();
+  8:test_case_reset();
+  9:test_case_wrap_around();
+  10:test_case_simultaneous_read_write();
   11:test_case_overflow();
   12:begin
        test_case_write_operation();
@@ -85,7 +85,7 @@ end
 
 task test_case_write_operation();
 begin
-  data_in = 32'hAABBCCDD;
+  data_in = 8'hAB;
   w_en = 1; #10 w_en = 0; 
   if(empty)
     $display("Error : FIFO should not be empty");
@@ -97,7 +97,7 @@ endtask
 task test_case_read_operation();
 begin
   r_en = 1; #10 r_en = 0; 
-  if(data_out !== 32'hAABBCCDD)
+  if(data_out !== 8'hAB)
     $display("Error : Data read mismatch");
   else
     $display("Data read from FIFO correctly");
@@ -133,10 +133,10 @@ endtask
 
 task test_case_single_element();
 begin
-    data_in = 32'h55667788;
+    data_in = 8'h12;
     w_en = 1; #10 w_en = 0;
     r_en = 1; #10 r_en = 0;  
-  if(data_out !== 32'h55667788)
+  if(data_out !== 8'h12)
     $display("Error : Single element mismatch");
   else
     $display("Single element matched");
@@ -170,6 +170,18 @@ begin
 end
 endtask
 
+task test_case_reset();
+begin
+    data_in = 8'hCD;
+    w_en = 1; #10 w_en = 0;
+    reset = 0; #10 reset = 1;
+    if(!empty)
+    $display("Error : FIFO not empty after reset");
+  else
+    $display("FIFO is empty after reset");
+end
+endtask
+
 task test_case_wrap_around();
 integer i;
 begin
@@ -182,14 +194,14 @@ begin
   begin
     r_en = 1; #10 r_en = 0;
   end
-  data_in = 32'h77987654;
+  data_in = 8'h34;
   w_en = 1; #10 w_en = 0; 
   for(i=2; i < DEPTH; i=i+1)
   begin
     r_en = 1; #10 r_en = 0; 
   end
   r_en = 1; #10 w_en = 0;    
-  if(data_out !== 32'h77987654)
+  if(data_out !== 8'h34)
     $display("Error : Wrap-around mismatch");
   else
     $display("Wrap-around test case passed");
@@ -198,31 +210,19 @@ endtask
 
 task test_case_simultaneous_read_write();
 begin
-    data_in = 32'h55123456;
+    data_in = 8'h56;
     w_en = 1; r_en = 0; #10
     w_en = 0; r_en = 0; #10
-    data_in = 32'h99345680;
+    data_in = 8'h78;
     w_en = 1; r_en = 1; #20
-    if(data_out !== 32'h55123456)
+    if(data_out !== 8'h56)
       $display("Error : Expected 8'h55, got %h", data_out);
     w_en = 0; r_en = 1; #10
-    if(data_out !== 32'h99345680)
+    if(data_out !== 8'h78)
       $display("Error : Simultaneous read/write failed. Expected 8'h99, got %h", data_out);  
     else
       $display("Simultaneous read_write test case passed");
     w_en = 0; r_en = 0;  
-end
-endtask
-
-task test_case_reset();
-begin
-    data_in = 32'hFFEEDDCC;
-    w_en = 1; #10 w_en = 0;
-    reset = 0; #10 reset = 1;
-    if(!empty)
-    $display("Error : FIFO not empty after reset");
-  else
-    $display("FIFO is empty after reset");
 end
 endtask
 
