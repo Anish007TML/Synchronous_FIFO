@@ -8,7 +8,7 @@ This project implements a Synchronous FIFO in Verilog HDL, designed for simulati
 
 **Design Module**
 
-The Synchronous_FIFO module is designed to ensure efficient data handling in digital systems. Proper configuration prevents common issues like overflow or underflow, guaranteeing reliable data management. The FIFO operates on a single clock domain and supports configurable data width and depth. It uses a circular buffer with read and write pointers, and a counter to track the number of elements in the queue.
+The Synchronous_FIFO.v module is designed to ensure efficient data handling in digital systems. Proper configuration prevents common issues like overflow or underflow, guaranteeing reliable data management. The FIFO operates on a single clock domain and supports configurable data width and depth. It uses a circular buffer with read and write pointers, and a counter to track the number of elements in the queue.
 
 **PARAMETERS**
 | Parameter | Description       | Default |
@@ -30,7 +30,7 @@ The Synchronous_FIFO module is designed to ensure efficient data handling in dig
 
 **Test Bench Case Implementation**
 
-The testbench for the FIFO module generates random data and writes it to the FIFO, then reads it back and compares the results. The test bench encompasses a wide range of tests designed to rigourously validate the FIFO's operation.
+The testbench Synchronous_FIFO_tb.v for the FIFO module generates random data and writes it to the FIFO, then reads it back and compares the results. The test bench encompasses a wide range of tests designed to rigourously validate the FIFO's operation.
 Functional tests verify the FIFO's basic operations: write, read, full and empty condition.
 Stress tests evaluate behaviour under extreme conditions such as wrap-around, simultaneous read/write, and overflow/underflow.
 Reset and Duration tests confirm the correct reset functionalitu and long-term stability.
