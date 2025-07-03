@@ -104,7 +104,7 @@ The synchronous FIFO design was tested using a testbench. The following key resu
 
 **Conclusion**
 
-The synchronous FIFO was successfully designed, implemented, and verified in Vivado using Verilog HDL. The FIFO efficiently handles data transfer between modules operating under the same clock domain, ensuring smooth and reliable data flow. Simulation and synthesis results confirmed correct functionality, with proper handling of full, empty, read, and write operations. This design can now be integrated into larger digital systems such as processors, image buffers, or communication interfaces.
+The synchronous FIFO was successfully designed, implemented, and verified in Vivado using Verilog HDL. The FIFO efficiently handles data transfer between modules operating under the same clock domain, ensuring smooth and reliable data flow. Simulation  results confirmed correct functionality, with proper handling of full, empty, read, and write operations. This design can now be integrated into larger digital systems such as processors, image buffers, or communication interfaces.
 
 
 
