@@ -4,7 +4,7 @@ Here is a block diagram for synchronous FIFO :-
 
 ![image](https://github.com/user-attachments/assets/87ad34f2-4ab7-44b3-b469-a6a449c753c1)
 
-This project implements a Synchronous FIFO in Verilog HDL, designed for simulation and synthesis in Xilinx Vivado. The FIFO operates on a single clock domain, supports parameterized data width and depth, and includes control/status signals like full, empty, w_en, r_en and reset.
+This project implements a Synchronous FIFO in Verilog HDL, designed for simulation in Xilinx Vivado. The FIFO operates on a single clock domain, supports parameterized data width and depth, and includes control/status signals like full, empty, w_en, r_en and reset.
 
 **Design Module**
 
