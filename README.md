@@ -6,7 +6,7 @@ Here is a block diagram for synchronous FIFO :-
 
 This project implements a Synchronous FIFO in Verilog HDL, designed for simulation in Xilinx Vivado. The FIFO operates on a single clock domain, supports parameterized data width and depth, and includes control/status signals like full, empty, w_en, r_en and reset.
 
-**Design Module**
+## **Design Module**
 
 The Synchronous_FIFO.v module is designed to ensure efficient data handling in digital systems. Proper configuration prevents common issues like overflow or underflow, guaranteeing reliable data management. The FIFO operates on a single clock domain and supports configurable data width and depth. It uses a circular buffer with read and write pointers, and a counter to track the number of elements in the queue.
 
@@ -28,7 +28,7 @@ The Synchronous_FIFO.v module is designed to ensure efficient data handling in d
 |  full      | Output    | FIFO full status flag  |
 |  empty     | Output    | FIFO empty status flag |
 
-**Test Bench Case Implementation**
+## **Test Bench Case Implementation**
 
 The testbench Synchronous_FIFO_tb.v for the FIFO module generates random data and writes it to the FIFO, then reads it back and compares the results. The test bench encompasses a wide range of tests designed to rigourously validate the FIFO's operation.
 Functional tests verify the FIFO's basic operations: write, read, full and empty condition.
@@ -52,7 +52,7 @@ The test cases are :-
 
 The testbench uses a single clock for writing and reading, and includes reset signal to initialize the FIFO. The testbench finishes after running the test cases.
 
-**Simulation Waveforms**
+## **Simulation Waveforms**
 
 Test Case 1 : Write Operation Test
 ![image](https://github.com/user-attachments/assets/f6ff315d-fad9-4dfb-9cc0-6318dde2a78b)
@@ -90,19 +90,19 @@ Test Case 11 : Overflow Handling Test
 Test Case 12 : Underflow Handling Test
 ![image](https://github.com/user-attachments/assets/d88e27fe-25d1-4b81-94c1-7ba0b1c3f1e5)
 
-**Results**
+## **Results**
 
 The synchronous FIFO design was tested using a testbench. The following key results were observed:-
 1. Correct Data Storage and Retrieval: The FIFO correctly stored data when written to and retrieved the exact same data when read from. This was validated across multiple test cases with varying data patterns.
 2. Full and Empty Conditions: The FIFO accurately indicated full and empty conditions. When the FIFO was full, additional write operations were correctly prevented, and when the FIFO was empty, additional read operations were correctly halted.
 
-**Applications**
+## **Applications**
 1. Keyboard input buffering
 2. Data transfer between modules
 3. Temporary storage in image processing
 4. Communication in FPGA systems
 
-**Conclusion**
+## **Conclusion**
 
 The synchronous FIFO was successfully designed, implemented, and verified in Xilinx Vivado using Verilog HDL. The FIFO efficiently handles data transfer between modules operating under the same clock domain, ensuring smooth and reliable data flow. Simulation  results confirmed correct functionality, with proper handling of full, empty, read, and write operations. This design can now be integrated into larger digital systems such as processors, image buffers, or communication interfaces.
 
